@@ -96,7 +96,7 @@ class DB{
         //id有無判斷是更新還是新增
         if(isset($array['id'])){
             //update
-            foreach($array[0] as $key => $value){
+            foreach($array as $key => $value){
                 $tmp[]="`$key`='$value'";
             }
 
@@ -159,5 +159,12 @@ $Meun=new DB('menu');
 // echo $total['total'];
 // echo $Total->find(1)['total']; 同上兩行(可取代)
 
+//判斷是否首次進站
+if(!isset($_SESSION['total'])){
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['total']=$total['total'];
+}
 
 ?>
