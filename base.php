@@ -160,11 +160,11 @@ $Meun=new DB('menu');
 // echo $Total->find(1)['total']; 同上兩行(可取代)
 
 //判斷是否首次進站
-if(!isset($_SESSION['total'])){
-    $total=$Total->find(1);
-    $total['total']++;
-    $Total->save($total);
-    $_SESSION['total']=$total['total'];
+if(!isset($_SESSION['total'])){ //若是沒有$_SESSION['total'] 就執行以下程式
+    $total=$Total->find(1); //自訂一個變數$total去找 $Total( =new DB('total'); )內的索引為1的資料，並且等於其值
+    $total['total']++; //將得到的值 +1
+    $Total->save($total); //得到的值+1後存回去 $Total
+    $_SESSION['total']=$total['total']; //讓 $_SESSION['total'] 存在
 }
 
 ?>
