@@ -65,8 +65,34 @@ class DB{
     // 找全部資料 end
 
 
-    //計算資料(各種方式) 
+    //計算資料(各種方式) count max min sum...
     public function math($method,$col,...$arg){
+        $sql="SELECT $method($col) FROM $this->table ";
+
+        switch(count($arg)){
+            case 2:
+                foreach($arg[0] as $key => $value){
+                    $tmp[]="`$key`='$value'";
+                }
+
+                $sql .=" WHERE ".implode(" AND ".$arg[0])." ".$arg[1];
+            break;
+            case 1:
+                if(is_array($arg[0])){
+                    foreach($arg[0] as $key => $value){
+                        $tmp[]="`$key`='$value'";
+                    }
+                    $sql .=" WHERE ".implode(" AND ".$arg[0]);
+                }else{
+
+                    $sql .=$arg[1];
+
+                }
+
+            break;
+        }
+
+
 
         return $this->pdo->query($sql)->fetchColumn(); //僅針對回傳一個資料的狀況
         
@@ -76,7 +102,23 @@ class DB{
 
     //新增跟更新資料
     public function save($array){
-        //要有id判斷是否產生陣列
+        //id有無判斷是更新還是新增
+        if(isset($array['id'])){
+            //update
+            foreach($array[0] as $key => $value){
+                $tmp[]="`$key`='$value'";
+            }
+
+            $sql="UPDATE $this->table SET ".implode(",",$tmp)." WHERE `id`='{$array['id']}'";
+        
+        }else{
+            //insert
+            $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`) 
+                                     VALUES('".implode("','",$array)."')";
+
+
+        }
+
         
         return $this->pdo->exec($sql);
     }
