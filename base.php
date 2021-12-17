@@ -1,8 +1,6 @@
 <?php
 date_default_timezone_set("Asia/Taipei");
-
 session_start();
-
 class DB{
     protected $dsn="mysql:host=localhost;charset=utf8;dbname=web01";
     protected $user="root";
@@ -33,7 +31,6 @@ class DB{
     }
     // 找一筆資料end
 
-
     // 找全部資料
     public function all(...$arg){
         $sql="SELECT * FROM $this->table ";
@@ -52,14 +49,11 @@ class DB{
                     }
                     $sql .=" WHERE ".implode(" AND ".$arg[0]);
                 }else{
-
                     $sql .=$arg[1];
 
                 }
-
             break;
         }
-
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
     // 找全部資料 end
@@ -92,13 +86,10 @@ class DB{
             break;
         }
 
-
-
         return $this->pdo->query($sql)->fetchColumn(); //僅針對回傳一個資料的狀況
         
     }
     //計算資料(各種方式) end
-
 
     //新增跟更新資料
     public function save($array){
@@ -115,15 +106,12 @@ class DB{
             //insert
             $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`) 
                                      VALUES('".implode("','",$array)."')";
-
-
         }
 
         
         return $this->pdo->exec($sql);
     }
     //新增跟更新資料 end
-
 
     //刪除資料
     public function del($id){
@@ -157,7 +145,19 @@ function to($url){
     header("location:$url");
 }
 
+$Total=new DB('total');
+$Bottom=new DB('bottom');
+$Title=new DB('title');
+$Ad=new DB('ad');
+$Mvim=new DB('mvim');
+$Image=new DB('image');
+$News=new DB('news');
+$Admin=new DB('admin');
+$Meun=new DB('menu');
 
+// $total=$Total->find(1);
+// echo $total['total'];
+// echo $Total->find(1)['total']; 同上兩行(可取代)
 
 
 ?>
