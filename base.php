@@ -221,9 +221,7 @@ $Meun=new DB('menu');
 
 $tt=$_GET['do']??''; // = $tt=(isset($_GET['do']))?$_GET['do']:'';
 switch($tt){
-    case "title":
-        $DB=$Title;  
-    break;
+
     case "ad":
         $DB=$Ad;
     break;
@@ -247,6 +245,10 @@ switch($tt){
     break;
     case "menu":
         $DB=$Meun;
+    break;
+    // default:  除了上面以外都都是預設這個 可直接取代下面的case "title":
+    case "title":
+        $DB=$Title;  
     break;
 
 };
