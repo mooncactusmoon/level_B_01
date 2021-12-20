@@ -10,39 +10,39 @@
                     <td width="7%">刪除</td>
                     <td></td>
                 </tr>
-                <!-- 撈資料 -->
+                <!-- 撈資料  多筆資料的話 name要用陣列-->
                 <?php
                 $rows = $DB->all();
                 foreach ($rows as  $row) {
                     $checked=($row['sh']==1)?'checked':'';
 
                 ?>
-                    <!-- 撈資料 end -->
+                    
                     <tr>
                         <td width="45%">
                             <img src="./img/<?= $row['img']; ?>" style="width:300px;height:30px;">
                         </td>
                         <td width="23%">
-                            <input type="text" name="text" value="<?= $row['text']; ?>">
+                            <input type="text" name="text[]" value="<?= $row['text']; ?>">
                         </td>
                         <td width="7%">
                             <input type="radio" name="sh" value="<?= $row['id']; ?>" <?=$checked;?> >
                         </td>
-                        <!-- 題目要求刪除可多筆資料，故要注意這裡 -->
+                        
                         <td width="7%">
-                            <input type="checkbox" name="del[]" id="<?= $row['id']; ?>">
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
-                        <!-- name="del[]" end -->
+                        
                         <td>
-                        <input type="hidden" name="id" value="<?=$row['id'];?>">
+                        <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                         <input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/update_title.php?id=<?=$row['id'];?>&#39;)" value="更新圖片">
                         </td>
                     </tr>
-                    <!-- 最後一個括號別忘了 -->
                 <?php
+                    // 最後一個括號別忘了
                 }
                 ?>
-
+                <!-- 撈資料 end -->
             </tbody>
         </table>
         <table style="margin-top:40px; width:70%;">
