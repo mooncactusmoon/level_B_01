@@ -220,7 +220,7 @@ $Admin=new DB('admin');
 $Meun=new DB('menu');
 
 $tt=$_GET['do']??''; // = $tt=(isset($_GET['do']))?$_GET['do']:'';
-switch($_GET['do']){
+switch($tt){
     case "title":
         $DB=$Title;  
     break;
