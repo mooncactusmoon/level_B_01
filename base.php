@@ -203,6 +203,12 @@ function to($url){
     header("location:$url");
 }
 
+function dd($array){
+    echo "<pre>";
+    print_r($array);
+    echo "</pre>";
+}
+
 $Total=new DB('total');
 $Bottom=new DB('bottom');
 $Title=new DB('title');
