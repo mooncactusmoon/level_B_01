@@ -32,7 +32,7 @@ class DB{
                 $this->header="動態文字廣告";
             break;
             case "mvim":
-                $this->title="動態文字廣告管理";
+                $this->title="動畫圖片管理";
                 $this->button="新增動畫圖片";
                 $this->header="動畫圖片";
             break;
