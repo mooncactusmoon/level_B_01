@@ -25,6 +25,7 @@ class DB{
                 $this->title="網站標題管理";
                 $this->button="新增網站標題圖片";
                 $this->header="網站標題";
+                $this->append="替代文字";
             break;
             case "ad":
                 $this->title="動態文字廣告管理";
