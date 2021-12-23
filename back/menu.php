@@ -15,7 +15,7 @@
                 </tr>
                 <!-- 撈資料  多筆資料的話 name要用陣列-->
                 <?php
-                $rows = $DB->all();
+                $rows = $DB->all(['parent'=>0]);
                 foreach ($rows as  $row) {
                     $checked=($row['sh']==1)?'checked':'';
 

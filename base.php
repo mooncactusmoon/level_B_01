@@ -103,14 +103,14 @@ class DB{
                     $tmp[]="`$key`='$value'";
                 }
 
-                $sql .=" WHERE ".implode(" AND ".$arg[0])." ".$arg[1];
+                $sql .=" WHERE ".implode(" AND ",$tmp)." ".$arg[1];
             break;
             case 1:
                 if(is_array($arg[0])){
                     foreach($arg[0] as $key => $value){
                         $tmp[]="`$key`='$value'";
                     }
-                    $sql .=" WHERE ".implode(" AND ".$arg[0]);
+                    $sql .=" WHERE ".implode(" AND ",$tmp);
                 }else{
                     $sql .=$arg[0];
 
@@ -222,7 +222,7 @@ $Mvim=new DB('mvim');
 $Image=new DB('image');
 $News=new DB('news');
 $Admin=new DB('admin');
-$Meun=new DB('menu');
+$Menu=new DB('menu');
 
 $tt=$_GET['do']??''; // = $tt=(isset($_GET['do']))?$_GET['do']:'';
 switch($tt){
@@ -249,7 +249,7 @@ switch($tt){
         $DB=$Admin;
     break;
     case "menu":
-        $DB=$Meun;
+        $DB=$Menu;
     break;
     // default:  除了上面以外都都是預設這個 可直接取代下面的case "title":
     case "title":
