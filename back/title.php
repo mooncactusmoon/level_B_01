@@ -36,7 +36,7 @@
                         <td>
                         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                         <input type="button"
-                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/upload_title.php?id=<?=$row['id'];?>&#39;)" 
+                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/upload.php?do=<?=$DB->table;?>&id=<?=$row['id'];?>&#39;)" 
                               value="更新圖片">
                         </td>
                     </tr>
