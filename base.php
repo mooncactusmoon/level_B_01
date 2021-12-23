@@ -112,7 +112,7 @@ class DB{
                     }
                     $sql .=" WHERE ".implode(" AND ".$arg[0]);
                 }else{
-                    $sql .=$arg[1];
+                    $sql .=$arg[0];
 
                 }
             break;
