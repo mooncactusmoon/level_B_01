@@ -7,7 +7,7 @@
             <td><input type="text" name="name"></td>
         </tr>
         <tr>
-            <td>主選單連結:</td>
+            <td>主選單連結網址:</td>
             <td><input type="text" name="href"></td>
         </tr>
     </table>
