@@ -5,7 +5,7 @@
             <tbody>
                 <tr class="yel">
                    
-                    <td width="80%">動態文字廣告</td>
+                    <td width="80%"><?=$DB->header;?></td>
                     <td width="10%">顯示</td>
                     <td width="10%">刪除</td>
               
@@ -31,7 +31,7 @@
                     <tr>
                
                         <td width="80%">
-                            <textarea name="text" id="" style="width:95%;height:60px"><?=$row['text'];?></textarea>
+                            <textarea name="text[]" id="" style="width:95%;height:60px"><?=$row['text'];?></textarea>
                            
                         </td>
                         <td width="10%">
