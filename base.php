@@ -102,7 +102,6 @@ class DB{
                 foreach($arg[0] as $key => $value){
                     $tmp[]="`$key`='$value'";
                 }
-
                 $sql .=" WHERE ".implode(" AND ",$tmp)." ".$arg[1];
             break;
             case 1:
@@ -110,13 +109,13 @@ class DB{
                     foreach($arg[0] as $key => $value){
                         $tmp[]="`$key`='$value'";
                     }
-                    $sql .=" WHERE ".implode(" AND ",$tmp);
+                    $sql .= " WHERE ".implode(" AND ",$tmp);
                 }else{
-                    $sql .=$arg[0];
-
+                    $sql .= $arg[0];   
                 }
             break;
         }
+        // echo $sql;
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
     // 找全部資料 end

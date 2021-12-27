@@ -29,6 +29,30 @@ include_once "base.php";
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+						//正常來說main這個單字不能+S唷 :D
+						$mains=$Menu->all(['parent'=>0,'sh'=>1]); //主選單條件
+                        foreach($mains as $main){
+                            echo "<div class='mainmu'>";
+                            echo "<a href='{$main['href']}'>";
+                            echo $main['name'];
+                            echo "</a>";
+                            if($Menu->math('count','*',['parent'=>$main['id']])>0){
+                                $subs=$Menu->all(['parent'=>$main['id']]);
+                                echo "<div class='mw'>";
+                                foreach ($subs as $sub) {
+                                    echo "<div class='mainmu2'>";
+                                    echo "<a href='{$sub['href']}'>{$sub['name']}</a>";
+                                    echo "</div>";
+                                }
+                                echo "</div>";
+                            }
+                            echo "</div>";
+                        }
+
+
+					?>
+
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 : <?=$Total->find(1)['total'];?>
