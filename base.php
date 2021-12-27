@@ -251,7 +251,7 @@ switch($tt){
         $DB=$Menu;
     break;
     // default:  除了上面以外都都是預設這個 可直接取代下面的case "title":
-    case "title":
+    default:
         $DB=$Title;  
     break;
 
